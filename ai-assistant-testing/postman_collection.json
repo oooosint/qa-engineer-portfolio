@@ -1,0 +1,85 @@
+{
+  "info": {
+    "name": "AI Assistant | Demonstration QA",
+    "description": "Illustrative API only. Configure a permitted test service, adapt endpoints and response assertions.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "token",
+      "value": "REPLACE_WITH_TEST_TOKEN"
+    }
+  ],
+  "item": [
+    {
+      "name": "Valid prompt (sample contract)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"message\":\"Hello QA\",\"conversation_id\":\"demo-1\"}"
+        },
+        "url": "{{baseUrl}}/api/v1/chat"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is success', () => pm.expect(pm.response.code).to.be.oneOf([200,201,202]));",
+              "pm.test('JSON payload', () => pm.response.to.be.json);",
+              "pm.test('Response within illustrative 5s threshold', () => pm.expect(pm.response.responseTime).to.be.below(5000));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Empty prompt (sample contract)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"message\":\"\",\"conversation_id\":\"demo-1\"}"
+        },
+        "url": "{{baseUrl}}/api/v1/chat"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Validation rejected', () => pm.expect(pm.response.code).to.be.oneOf([400,422]));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
