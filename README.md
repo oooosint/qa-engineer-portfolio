@@ -1,4 +1,4 @@
-# Maxim Linkov · Manual QA Engineer — Portfolio
+#  Manual QA Engineer — Portfolio
 
 > **Demonstration portfolio for Manual QA Junior+ roles** specializing in web products, AI, online privacy and cryptocurrency payments.
 
