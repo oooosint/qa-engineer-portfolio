@@ -25,10 +25,5 @@
 3. Adapt the illustrative endpoint `/api/v1/chat` and response assertions to the actual API contract.
 4. Run requests and attach a redacted test report. This repository does **not** contain any verified live test runs.
 
-## About the author
-Technically curious QA candidate with hands-on experience exploring AI/LLM tools, virtual machines, VPN/networking setups and web tooling. This portfolio is targeted to Junior+ Manual QA opportunities in AI, cybersecurity and crypto payment ecosystems.
-
-**Contact:** Email and Telegram to be added after confirmation.
-
 ## Evidence & security
 Never publish access tokens, private keys, confidential API schemas, real customer records or unredacted logs. Mark `Passed` or `Failed` only with reproducible evidence and a known test environment.
